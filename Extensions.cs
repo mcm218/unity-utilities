@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using Object = UnityEngine.Object;
+
 public static class Extensions {
     /// <summary>
     /// Returns a new Vector3 with the specified values.

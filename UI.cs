@@ -125,6 +125,16 @@ namespace _Scripts.Utilities {
             return ele;
         }
         
+        
+        public static T RecursiveBuild<T> (this T ele, out T output) where T : VisualElement {
+            foreach (var child in ele.Children())
+            {
+                child.RecursiveBuild(out _);
+            }
+            output = ele;
+            return ele;
+        }
+        
         // Output as extension method to VisualElement
         public static T Build<T> (this T ele, out T output) where T : VisualElement {
             output = ele;

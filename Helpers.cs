@@ -5,16 +5,6 @@ using UnityEngine;
 
 public static class Helpers {
     /// <summary>
-    /// Destroys all child objects of this transform        
-    /// <code>
-    /// transform.DestroyChildren();
-    /// </code>
-    /// </summary>
-    public static void DestroyChildren(this Transform transform) {
-        foreach (Transform child in transform) { Object.Destroy(child.gameObject); }
-    }
-
-    /// <summary>
     /// Gets a random point within a box collider
     /// </summary>
     /// <param name="boxCollider"></param>
