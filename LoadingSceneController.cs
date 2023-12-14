@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace _Scripts.Utilities {
-    public class LoadingSceneController : PersistentSingleton<LoadingSceneController> {
+    public class LoadingSceneController : Singleton<LoadingSceneController> {
         [SerializeField]
         private UIDocument document;
 
@@ -13,36 +13,31 @@ namespace _Scripts.Utilities {
 
         protected override void Awake() {
             base.Awake();
-            
+
             if (document == null) {
                 document = GetComponent<UIDocument>();
-                if (document == null) {
-                    document = gameObject.AddComponent<UIDocument>();
-                }
+                if (document == null) { document = gameObject.AddComponent<UIDocument>(); }
             }
-            
+
             if (styleSheet == null) {
                 // styleSheet = Resources.Load<StyleSheet>("");
             }
         }
-        
-        public void Disable () {
+
+        public void Disable() {
             var root = document.rootVisualElement;
             root.Clear();
         }
-        
-        public void Enable () {
+
+        public void Enable() {
             StartCoroutine(GenerateUI());
         }
-        
-        public void Toggle () {
-            if (document.rootVisualElement.childCount > 0) {
-                Disable();
-            } else {
-                Enable();
-            }
+
+        public void Toggle() {
+            if (document.rootVisualElement.childCount > 0) { Disable(); }
+            else { Enable(); }
         }
-        
+
         private IEnumerator GenerateUI() {
             yield return null;
 
@@ -51,19 +46,21 @@ namespace _Scripts.Utilities {
             if (styleSheet != null) root.styleSheets.Add(styleSheet);
 
             root.Add(
-                     // Blackout screen
-                     UI.Create("flex justify-center items-center flex-col h-full w-full bg-black")
+                     UI.Create()
+                       .Style("flex justify-center items-center flex-col h-full w-full bg-black")
                        .Push(
-                             UI.Create("rounded-lg bg-gray-900 p-6 text-sm")
+                             UI.Create()
+                               .Style("rounded-lg bg-gray-900 p-6 text-sm")
                                .Push(
                                      // title
-                                     UI.Create<Label>("text-center text-2xl font-bold text-purple-200 mb-4")
+                                     UI.Create<Label>()
+                                       .Style("text-center text-2xl font-bold text-purple-200 mb-4")
                                        .Text("Loading...")
                                     )
                             )
                        .RecursiveBuild(out var loadingMenuContainer)
                     );
-        }
 
+        }
     }
 }

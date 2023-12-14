@@ -36,7 +36,6 @@ namespace _Scripts.Utilities {
 
             return ele;
         }
-        
         public static T AddHoverClass<T> (this T ele, string hoverClass) where T : VisualElement
         {
             ele.RegisterCallback<MouseEnterEvent>(evt => {
@@ -109,6 +108,16 @@ namespace _Scripts.Utilities {
             if (ele is Button button)
             {
                 button.RegisterCallback<MouseUpEvent>(callback);
+            }
+            
+            return ele;
+        }
+        
+        public static T Style<T> (this T ele, string classes) where T : VisualElement
+        {
+            foreach (var className in classes.Split(' '))
+            {
+                ele.AddToClassList(className);
             }
             
             return ele;
