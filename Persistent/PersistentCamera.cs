@@ -6,4 +6,5 @@ namespace _Scripts.Utilities {
     public class PersistentCamera : PersistentSingleton<PersistentCamera> {
    
     }
+
 }

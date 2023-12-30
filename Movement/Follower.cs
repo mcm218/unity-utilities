@@ -13,6 +13,9 @@ namespace _Scripts.Utilities {
         
         [SerializeField,Range(0f,1f), InfoBox("The higher the value, the faster the camera will follow the target")]
         private float smoothSpeed = 0.125f;
+        
+        [SerializeField]
+        private bool followRotation = true;
 
         private void LateUpdate() {
             if (target == null) return;
@@ -28,12 +31,12 @@ namespace _Scripts.Utilities {
             Vector3 desiredPosition = target.position + offset;
             Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
             transform.position = smoothedPosition;
-            transform.rotation = target.rotation;
+            if (followRotation) transform.rotation = target.rotation;
         }
 
         private void Awake() {
             if (target == null) {
-                var potentialTarget = GameObject.FindGameObjectWithTag("Player")?.transform;
+                var potentialTarget = GameObject.FindGameObjectWithTag("MainCamera")?.transform;
                 if (potentialTarget != null) {
                     target = potentialTarget;
                 }
