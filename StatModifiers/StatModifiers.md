@@ -4,6 +4,7 @@ These files are all fairly tightly coupled and should **not** be extended from d
 ## Files to Modify
 - `BaseStats.cs` -> update to include game specific stats
 - `StatType.cs` -> update to include game specific stats
-- `Stats.cs` -> update to include game specific stat getters and constructor
 - `Query.cs` -> update to include new `StatType`
-- `StatMediator.cs` -> update to include new `Query`
+- `StatModifier.cs` -> update to use new `Query`
+- `StatMediator.cs` -> update to include new `Query` and new `StatModifier`
+- `Stats.cs` -> update to include game specific stat getters and constructor
