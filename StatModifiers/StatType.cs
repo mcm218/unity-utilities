@@ -1,4 +1,8 @@
 public enum StatType {
     Attack,
-    Defense
+    Defense,
+    SpecialAttack,
+    SpecialDefense,
+    Speed,
+    HP
 }

@@ -1,7 +1,7 @@
 using System;
 using _Scripts.Utilities;
 
-public abstract class StatModifier : IDisposable {
+internal abstract class StatModifier : IDisposable {
     public bool MarkedForRemoval { get; private set; }
 
     public event Action<StatModifier> OnDispose = delegate { };

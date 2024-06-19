@@ -1,4 +1,4 @@
-public class Query {
+internal class Query {
     public readonly StatType StatType;
     public          int      Value;
     

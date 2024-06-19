@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-public class StatsMediator {
+internal class StatsMediator {
     private readonly LinkedList<StatModifier> modifiers = new();
 
     public event EventHandler<Query> Queries;
